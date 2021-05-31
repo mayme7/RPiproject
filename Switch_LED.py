@@ -9,7 +9,7 @@ GPIO.setmode(GPIO.BOARD)
 
 def main():
   GPIO.setup(Switch, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-  GPIO.setup(LED, GPIO.OUT)
+  GPIO.setup(LED, GPIO.OUT, initial=GPIO.LOW)
 
   while True:
     if GPIO.input(Switch) == GPIO.HIGH:
