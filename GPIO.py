@@ -11,14 +11,17 @@ def main():
   
   # Set pin 10 to be an input pin and set initial value to be pulled low (off)
   GPIO.setup(Switch, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+  GPIO.setup(LED, GPIO.OUT)
 
   while True: 
     # GPIO.input(Switch)와 GPIO.HIGH를 AND 연산으로 변경 가능
     if GPIO.input(Switch) == GPIO.HIGH:
       print("Button was pushed!")
+      GPIO.output(LED, GPIO.HIGH)
       time.sleep(0.5)
     else:
-      print("Button was not pushed!") 
+      print("Button was not pushed!")
+      GPIO.output(LED, GPIO.LOW)
       time.sleep(0.5)
 
 if __name__ == '__main__':
