@@ -4,7 +4,6 @@ import time
 GPIO.setmode(GPIO.BOARD)
 LED = 10
 
-
 def main():
     GPIO.setup(LED, GPIO.OUT, initial=GPIO.LOW)
     while 1:
