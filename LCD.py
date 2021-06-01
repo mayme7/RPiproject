@@ -19,12 +19,12 @@ while True:
         mylcd.lcd_display_string("LED ON!",1)
         time.sleep(0.5)
         mylcd.lcd_clear()
-        time.sleep(0.5)
+        sleep(0.5)
     else:
         print("Button was not pushed!")
         GPIO.output(LED, GPIO.LOW)
         mylcd.lcd_display_string("LED OFF!",1)
         time.sleep(0.5)
         mylcd.lcd_clear()
-        time.sleep(0.5)
+        sleep(0.5)
         
