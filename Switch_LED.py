@@ -14,12 +14,12 @@ def main():
   try:
     while True:
       if GPIO.input(Switch) == GPIO.HIGH:
-        print("LED ON!")
         GPIO.output(LED, GPIO.HIGH)
+        print("LED ON!")
         time.sleep(0.5)
       else:
-        print("LED OFF!")
         GPIO.output(LED, GPIO.LOW)
+        print("LED OFF!")
         time.sleep(0.5)
         
   finally:
