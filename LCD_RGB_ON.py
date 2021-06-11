@@ -11,7 +11,9 @@ mylcd = LCD.lcd()
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 
-GPIO.setup(LED, GPIO.OUT, initial=GPIO.LOW)
+def main():
+  GPIO.setup(Switch, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+  GPIO.setup(LED, GPIO.OUT, initial=GPIO.LOW)
 
   try:
     while 1:
