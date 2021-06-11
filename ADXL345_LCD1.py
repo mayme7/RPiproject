@@ -51,8 +51,8 @@ def main():
             
         else:
             print("2")
-            mylcd.lcd_display_string("hi",1)
-            mylcd.lcd_display_string("hi",2)
+            mylcd.lcd_display_string("Hello1",1)
+            mylcd.lcd_display_string("Hello2",2)
         
 if __name__ == '__main__':
     main()
