@@ -19,6 +19,7 @@ def main():
     while 1:
       for duty in range(100):
         PWM_LED.ChangeDutyCycle(duty)
+        print(PWM_LED)
         time.sleep(0.5)
         
       if GPIO.input(Switch) == GPIO.HIGH:
