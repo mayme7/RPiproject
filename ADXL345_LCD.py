@@ -37,6 +37,7 @@ def measure_acc(adr):
 def main():
     print(bus)
     init_ADXL345()
+    mylcd = LCD.lcd()
     while 1:
         x = input()
         if x == '1':
