@@ -24,6 +24,7 @@ x_adr = 0x32
 y_adr = 0x34
 z_adr = 0x36
 
+mylcd = LCD.lcd()
 
 # ADXL345 init
 def init_ADXL345():
@@ -120,7 +121,6 @@ def demo(n, block_orientation, rotate, inreverse):
 def main():
     print(bus)
     init_ADXL345()
-    mylcd = LCD.lcd()
     
     while 1:
         num = input()
@@ -162,5 +162,3 @@ if __name__ == '__main__':
     parser.add_argument('--reverse-order', type=bool, default=False, help='Set to true if blocks are in reverse order')
 
     args = parser.parse_args()
-
-
