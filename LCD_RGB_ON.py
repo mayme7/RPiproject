@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import I2C_driver as LCD
-from time import *
+import time
 
 LED_G = 12
 LED_B = 16
