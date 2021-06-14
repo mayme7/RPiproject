@@ -57,8 +57,6 @@ def demo(n, block_orientation, rotate, inreverse):
             print("1")
             mylcd.lcd_display_string("LCD OUTPUT1", 1)
             mylcd.lcd_display_string("LCD OUTPUT1", 2)
-            time.sleep(1)
-            mylcd.lcd_clear() 
             
         elif num == '2':  # 01234 5
             print("2")
@@ -67,13 +65,13 @@ def demo(n, block_orientation, rotate, inreverse):
             z_acc = measure_acc(z_adr)
 
             print('X = %2.2f' % x_acc, '[g], Y = %2.2f' % y_acc, '[g], Z = %2.2f' % z_acc, '[g]')
+            mylcd.lcd_display_string('X = %2.2f' % x_acc, '[g], Y = %2.2f' % y_acc, '[g], Z = %2.2f' % z_acc, '[g]', 2)
+            mylcd.lcd_clear() 
             
         elif num == '3':  # LCD Dot Matrix
             print("3")
             mylcd.lcd_display_string("LCD OUTPUT3", 1)
             mylcd.lcd_display_string("LCD OUTPUT3", 2)    
-            time.sleep(1)
-            mylcd.lcd_clear() 
             
             # create matrix device
             serial = spi(port=0, device=0, gpio=noop())
