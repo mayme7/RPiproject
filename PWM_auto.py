@@ -1,14 +1,18 @@
 import RPi.GPIO as GPIO
 import time
 
-GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BOARD)
+
+LED = 12
+
 GPIO.setup(12, GPIO.OUT)
 pwm = GPIO.PWM(12, 100) # pin 14 at 100 Hz
 value = 0
 pwm.start(value) # Start at 0
 
 increment = 2 #smooth is the fade
-sleeptime = .03 # fast is the fade
+#sleeptime = 0.3 # fast is the fade
 
 try:
  while True: 
@@ -17,7 +21,7 @@ try:
   if value > 100:
    value = 0
   pwm.ChangeDutyCycle(value)
-  sleep(0.5)
+  sleep(0.3)
 
 except KeyboardInterrupt:
  pwm.stop()
