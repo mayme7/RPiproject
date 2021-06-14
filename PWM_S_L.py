@@ -32,7 +32,7 @@ try:
                 main(i * 10, p1)
                 time.sleep(0.5)
 
-            print("%.2f" % (PWM_LED))
+            print("%.2f" % (p1))
             time.sleep(0.5)
             mylcd.lcd_clear()
 
@@ -48,7 +48,7 @@ try:
                 main(j * 10, p1)
                 time.sleep(0.5)
 
-            print("%.2f" % (PWM_LED))
+            print("%.2f" % (p1))
             time.sleep(0.5)
             mylcd.lcd_clear()
 
