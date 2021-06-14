@@ -51,7 +51,6 @@ def demo(n, block_orientation, rotate, inreverse):
     mylcd = LCD.lcd()
     
     while 1:
-        print("Input Number.")
         num = input()
         if num == '1':
             print("1")
