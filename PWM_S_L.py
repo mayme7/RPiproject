@@ -26,15 +26,19 @@ def main():
       if GPIO.input(Switch) == GPIO.HIGH:
         print("Switch Push")
         mylcd.lcd_display_string("Switch Push!",1)
-        PWM_LED = PWM_LED + 50
-        print(GPIO.PWM)
         time.sleep(0.5)
+        PWM_LED = PWM_LED + 50
+        print(PWM_LED)
+        time.sleep(0.5)
+        mylcd.lcd_clear()
         
       else:
         print("Switch didn't push")
         mylcd.lcd_display_string("Switch didn't push!",1)
-        print(GPIO.PWM)
         time.sleep(0.5)
+        print(PWM_LED)
+        time.sleep(0.5)
+        mylcd.lcd_clear()
         
   finally:
     GPIO.cleanup()
