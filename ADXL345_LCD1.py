@@ -47,7 +47,6 @@ def main():
     print(bus)
     init_ADXL345()
 
-    try:
         while 1:
             num = input()
             if num == '1':
@@ -65,12 +64,6 @@ def main():
                 mylcd.lcd_display_string("Hello1", 1)
                 mylcd.lcd_display_string("Hello2", 2)
                 time.sleep(0.5)
-                
-    except KeyboardInterrupt:
-        pass
-
-    finally:
-        GPIO.cleanup()
 
 if __name__ == '__main__':
     main()
