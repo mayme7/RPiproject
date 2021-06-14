@@ -1,5 +1,6 @@
 # smbus library
 import smbus
+
 import RPi.GPIO as GPIO
 import I2C_driver as LCD
 import luma.led_matrix as examples
@@ -125,7 +126,7 @@ def main():
             mylcd.lcd_display_string("LCD OUTPUT1",1)
             mylcd.lcd_display_string("LCD OUTPUT2",2)
             
-        elif x =='2': #01234 5개 받기
+        elif x =='2': #01234 5
             print("2")
             x_acc = measure_acc(x_adr)
             y_acc = measure_acc(y_adr)
@@ -134,7 +135,7 @@ def main():
             print ('X = %2.2f' % x_acc, '[g], Y = %2.2f' % y_acc, '[g], Z = %2.2f' % z_acc, '[g]')
             mylcd.lcd_clear()
             
-       elif x =='3': # LCD 도트매트릭스 동시 동작     
+       elif x =='3': # LCD Dot Matrix
             print("3")
             mylcd.lcd_display_string("LCD OUTPUT1",1)
             mylcd.lcd_display_string("LCD OUTPUT2",2)
