@@ -28,7 +28,7 @@ def main():
         mylcd.lcd_display_string("Green LED ON!",1)
         GPIO.output(LED_G, GPIO.HIGH)
         time.sleep(0.5)
-      elif GPIO.input(Switch_G) == GPIO.LOW:
+      else:
         print("LED OFF!")
         mylcd.lcd_display_string("Green LED OFF!",1)
         GPIO.output(LED_G, GPIO.LOW)
