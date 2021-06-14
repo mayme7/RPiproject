@@ -28,6 +28,7 @@ try:
             setLight(i * 10, p1)
             time.sleep(0.5)
               
+              
          # 두번째 LED 점점 어두워지게
         for j in range(10, -1, -1):
             p2.start(100)
