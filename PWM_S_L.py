@@ -8,12 +8,12 @@ Switch = 10
 LED = 12
 
 def main():
-    #GPIO.setup(LED, GPIO.OUT)
-    GPIO.setup(Switch, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-    GPIO.setup(LED, GPIO.OUT, initial=GPIO.LOW)
+  #GPIO.setup(LED, GPIO.OUT)
+  GPIO.setup(Switch, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+  GPIO.setup(LED, GPIO.OUT, initial=GPIO.LOW)
 
-    PWM_LED= GPIO.PWM(LED, 50)
-    PWM_LED.start(0)
+  PWM_LED= GPIO.PWM(LED, 50)
+  PWM_LED.start(0)
 
   try:
     while 1:
@@ -37,5 +37,5 @@ def main():
     GPIO.cleanup()
    
 if __name__ == '__main__':
-    main()
+  main()
     
