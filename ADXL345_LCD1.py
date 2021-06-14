@@ -17,6 +17,9 @@ x_adr = 0x32
 y_adr = 0x34
 z_adr = 0x36
 
+mylcd = LCD.lcd()
+
+GPIO.setwarnings(False)
 
 # ADXL345 init
 def init_ADXL345():
@@ -43,7 +46,6 @@ def measure_acc(adr):
 def main():
     print(bus)
     init_ADXL345()
-    mylcd = LCD.lcd()
 
     try:
         while 1:
