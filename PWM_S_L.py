@@ -9,26 +9,29 @@ Switch = 10
 LED = 12
 mylcd = LCD.lcd()
 
-def main():
-  GPIO.setup(Switch, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-  GPIO.setup(LED, GPIO.OUT, initial=GPIO.LOW)
-
-  PWM_LED= GPIO.PWM(LED, 50)
-  PWM_LED.start(0)
-
+GPIO.setup(Switch, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(LED, GPIO.OUT, initial=GPIO.LOW)
+  
+def main(light, p):
+    p.ChangeDutyCycle(light)
+      
   try:
+    p1 = GPIO.PWM(LED, 0)
+    p1.start(0)
+    
     while 1:
-      #for duty in range(100):
-        #PWM_LED.ChangeDutyCycle(duty)
-        #print(PWM_LED)
-        #time.sleep(0.5)
-        
       if GPIO.input(Switch) == GPIO.HIGH:
         print("Switch Push")
         mylcd.lcd_display_string("Switch Push!",1)
         time.sleep(0.5)
-        PWM_LED = PWM_LED + 50
-        print(PWM_LED)
+        
+        for i in range(10):
+              GPIO.output(LED, True)
+              p1.ChangeDutyCycle(i*10)
+              setLight(i * 10, p1)
+              time.sleep(0.5)
+              
+        print("%.2f" % (PWM_LED))
         time.sleep(0.5)
         mylcd.lcd_clear()
         
@@ -36,13 +39,24 @@ def main():
         print("Switch didn't push")
         mylcd.lcd_display_string("Switch didn't push!",1)
         time.sleep(0.5)
-        print(PWM_LED)
+        
+        for j in range(10, -1, -1):
+              p2.start(100)
+              GPIO.output(LED, True)
+              p2.ChangeDutyCycle(j*10)
+              setLight(j * 10, p1)
+              time.sleep(0.5)  
+              
+        print("%.2f" % (PWM_LED))
         time.sleep(0.5)
         mylcd.lcd_clear()
+        
+  except KeyboardInterrupt:
+      pass      
         
   finally:
     GPIO.cleanup()
    
 if __name__ == '__main__':
-  main()
+  main(light, p)
     
