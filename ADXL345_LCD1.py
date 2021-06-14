@@ -40,8 +40,8 @@ def main():
     init_ADXL345()
     mylcd = LCD.lcd()
     while 1:
-        num = input()
-        if num == '1':
+        x = input()
+        if x == '1':
             print("1")
             x_acc = measure_acc(x_adr)
             y_acc = measure_acc(y_adr)
@@ -58,4 +58,3 @@ def main():
         
 if __name__ == '__main__':
     main()
-    
