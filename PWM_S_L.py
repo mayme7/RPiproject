@@ -17,7 +17,7 @@ def main(light, p):
     p.ChangeDutyCycle(light)
 
 try:
-    p1 = GPIO.PWM(LED, 0)
+    p1 = GPIO.PWM(LED, 100)
     p1.start(0)
 
     while 1:
