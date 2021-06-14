@@ -26,3 +26,6 @@ try:
 except KeyboardInterrupt:
  pwm.stop()
  GPIO.cleanup()
+
+if __name__ == '__main__':
+  main()
