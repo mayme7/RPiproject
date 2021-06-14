@@ -12,7 +12,6 @@ mylcd = LCD.lcd()
 GPIO.setup(Switch, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(LED, GPIO.OUT, initial=GPIO.LOW)
 
-
 def main(light, p):
     p.ChangeDutyCycle(light)
 
@@ -42,7 +41,7 @@ try:
             time.sleep(0.5)
 
             for j in range(10, -1, -1):
-                p1.start(250)
+                p1.start(100)
                 GPIO.output(LED, True)
                 p1.ChangeDutyCycle(j * 10)
                 main(j * 10, p1)
@@ -60,4 +59,3 @@ finally:
 
 if __name__ == '__main__':
     main(light, p)
-
