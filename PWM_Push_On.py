@@ -26,13 +26,14 @@ try:
             mylcd.lcd_display_string("Switch Push!", 1)
             time.sleep(0.5)
 
-            for i in range(10):
+            for j in range(10, -1, -1):
+                p1.start(250)
                 GPIO.output(LED, True)
-                p1.ChangeDutyCycle(i * 10)
-                main(i * 10, p1)
+                p1.ChangeDutyCycle(j * 10)
+                main(j * 10, p1)
+                mylcd.lcd_display_string(p1, 1)
                 time.sleep(0.5)
 
-            print("%.2f" % (p1))
             time.sleep(0.5)
             mylcd.lcd_clear()
 
@@ -41,14 +42,13 @@ try:
             mylcd.lcd_display_string("Switch didn't push!", 1)
             time.sleep(0.5)
 
-            for j in range(10, -1, -1):
-                p1.start(100)
+            for i in range(10):
                 GPIO.output(LED, True)
-                p1.ChangeDutyCycle(j * 10)
-                main(j * 10, p1)
+                p1.ChangeDutyCycle(i * 10)
+                main(i * 10, p1)
+                mylcd.lcd_display_string(p1, 1)
                 time.sleep(0.5)
 
-            print("%.2f" % (p1))
             time.sleep(0.5)
             mylcd.lcd_clear()
 
