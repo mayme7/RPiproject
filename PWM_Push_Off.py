@@ -31,7 +31,6 @@ try:
                 GPIO.output(LED, True)
                 p1.ChangeDutyCycle(j * 10)
                 main(j * 10, p1)
-                mylcd.lcd_display_string(p1, 1)
                 time.sleep(0.5)
 
             time.sleep(0.5)
@@ -46,7 +45,6 @@ try:
                 GPIO.output(LED, True)
                 p1.ChangeDutyCycle(i * 10)
                 main(i * 10, p1)
-                mylcd.lcd_display_string(p1, 1)
                 time.sleep(0.5)
 
             time.sleep(0.5)
