@@ -47,23 +47,24 @@ def main():
     print(bus)
     init_ADXL345()
 
-        while 1:
-            num = input()
-            if num == '1':
-                print("1")
-                x_acc = measure_acc(x_adr)
-                y_acc = measure_acc(y_adr)
-                z_acc = measure_acc(z_adr)
+    while 1:
+        num = input()
+        if num == '1':
+            print("1")
+            x_acc = measure_acc(x_adr)
+            y_acc = measure_acc(y_adr)
+            z_acc = measure_acc(z_adr)
 
-                print('X = %2.2f' % x_acc, '[g], Y = %2.2f' % y_acc, '[g], Z = %2.2f' % z_acc, '[g]')
-                time.sleep(0.5)
-                mylcd.lcd_clear()
+            print('X = %2.2f' % x_acc, '[g], Y = %2.2f' % y_acc, '[g], Z = %2.2f' % z_acc, '[g]')
+            time.sleep(0.5)
+            mylcd.lcd_clear()
 
-            elif num == '2':
-                print("2")
-                mylcd.lcd_display_string("Hello1", 1)
-                mylcd.lcd_display_string("Hello2", 2)
-                time.sleep(0.5)
+        elif num == '2':
+            print("2")
+            mylcd.lcd_display_string("Hello1", 1)
+            mylcd.lcd_display_string("Hello2", 2)
+            time.sleep(0.5)
+        
 
 if __name__ == '__main__':
     main()
