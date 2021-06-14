@@ -1,11 +1,8 @@
 # smbus library
 import smbus
-
-# time library
-import time
-
 import RPi.GPIO as GPIO
 import I2C_driver as LCD
+import time
 
 bus = smbus.SMBus(1)
 
@@ -17,18 +14,13 @@ x_adr = 0x32
 y_adr = 0x34
 z_adr = 0x36
 
-mylcd = LCD.lcd()
-
-GPIO.setwarnings(False)
-
 # ADXL345 init
-def init_ADXL345():
+def init_ADXL345():    
     print('ADXL345 init function')
     bus.write_byte_data(address, 0x2D, 0x08)
 
-
 # data measure
-def measure_acc(adr):
+def measure_acc(adr):    
     acc0 = bus.read_byte_data(address, adr)
 
     acc1 = bus.read_byte_data(address, adr + 1)
@@ -46,7 +38,7 @@ def measure_acc(adr):
 def main():
     print(bus)
     init_ADXL345()
-
+    mylcd = LCD.lcd()
     while 1:
         num = input()
         if num == '1':
@@ -54,17 +46,16 @@ def main():
             x_acc = measure_acc(x_adr)
             y_acc = measure_acc(y_adr)
             z_acc = measure_acc(z_adr)
-
-            print('X = %2.2f' % x_acc, '[g], Y = %2.2f' % y_acc, '[g], Z = %2.2f' % z_acc, '[g]')
-            time.sleep(0.5)
+            
+            print ('X = %2.2f' % x_acc, '[g], Y = %2.2f' % y_acc, '[g], Z = %2.2f' % z_acc, '[g]')
             mylcd.lcd_clear()
-
-        elif num == '2':
+            
+        else:
             print("2")
-            mylcd.lcd_display_string("Hello1", 1)
-            mylcd.lcd_display_string("Hello2", 2)
-            time.sleep(0.5)
+            mylcd.lcd_display_string("Input2",1)
+            mylcd.lcd_display_string("Input2",2)
         
-
+        
 if __name__ == '__main__':
     main()
+    
