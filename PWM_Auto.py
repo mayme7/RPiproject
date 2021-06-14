@@ -21,7 +21,7 @@ try:
   if value > 100:
    value = 0
   pwm.ChangeDutyCycle(value)
-  sleep(0.3)
+  time.sleep(0.3)
 
 except KeyboardInterrupt:
  pwm.stop()
