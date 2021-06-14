@@ -1,6 +1,5 @@
 # smbus library
 import smbus
-
 import RPi.GPIO as GPIO
 import I2C_driver as LCD
 import luma.led_matrix as examples
@@ -8,7 +7,6 @@ import time
 import re
 import time
 import argparse
-
 from luma.led_matrix.device import max7219
 from luma.core.interface.serial import spi, noop
 from luma.core.render import canvas
@@ -26,13 +24,15 @@ x_adr = 0x32
 y_adr = 0x34
 z_adr = 0x36
 
+
 # ADXL345 init
-def init_ADXL345():    
+def init_ADXL345():
     print('ADXL345 init function')
     bus.write_byte_data(address, 0x2D, 0x08)
 
+
 # data measure
-def measure_acc(adr):    
+def measure_acc(adr):
     acc0 = bus.read_byte_data(address, adr)
 
     acc1 = bus.read_byte_data(address, adr + 1)
@@ -45,7 +45,8 @@ def measure_acc(adr):
     acc = acc * 3.9 / 1000
 
     return acc
-  
+
+
 # dot matrix
 def demo(n, block_orientation, rotate, inreverse):
     # create matrix device
@@ -65,8 +66,8 @@ def demo(n, block_orientation, rotate, inreverse):
 
     show_message(device, msg, fill="white", font=proportional(LCD_FONT), scroll_delay=0.1)
 
-    #words= ['0','1','2','3','4','5','6','7','8','9']
-    words= ['O','X']
+    # words= ['0','1','2','3','4','5','6','7','8','9']
+    words = ['O', 'X']
     virtual = viewport(device, width=device.width, height=len(words) * 8)
     with canvas(virtual) as draw:
         for i, word in enumerate(words):
@@ -85,11 +86,11 @@ def demo(n, block_orientation, rotate, inreverse):
     for i in words:
         print(i, type(i))
         with canvas(device) as draw:
-            #text(draw, (0, 0), "A", fill="white")
+            # text(draw, (0, 0), "A", fill="white")
             text(draw, (0, 0), i, fill="white")
-            
+
         time.sleep(0.1)
-            
+
         for _ in range(5):
             for intensity in range(16):
                 device.contrast(intensity * 16)
@@ -114,49 +115,52 @@ def demo(n, block_orientation, rotate, inreverse):
         with canvas(device) as draw:
             text(draw, (0, 0), chr(x), fill="white")
             time.sleep(0.1)
-  
+
+
 def main():
     print(bus)
     init_ADXL345()
     mylcd = LCD.lcd()
+    
     while 1:
-        x = input()
-        if x == '1':
+        num = input()
+        if num == '1':
             print("1")
-            mylcd.lcd_display_string("LCD OUTPUT1",1)
-            mylcd.lcd_display_string("LCD OUTPUT2",2)
-            
-        elif x =='2': #01234 5
+            mylcd.lcd_display_string("LCD OUTPUT1", 1)
+            mylcd.lcd_display_string("LCD OUTPUT2", 2)
+
+        elif num == '2':  # 01234 5
             print("2")
             x_acc = measure_acc(x_adr)
             y_acc = measure_acc(y_adr)
             z_acc = measure_acc(z_adr)
-            
-            print ('X = %2.2f' % x_acc, '[g], Y = %2.2f' % y_acc, '[g], Z = %2.2f' % z_acc, '[g]')
+
+            print('X = %2.2f' % x_acc, '[g], Y = %2.2f' % y_acc, '[g], Z = %2.2f' % z_acc, '[g]')
             mylcd.lcd_clear()
-            
-       elif x =='3': # LCD Dot Matrix
+
+        elif num == '3':  # LCD Dot Matrix
             print("3")
-            mylcd.lcd_display_string("LCD OUTPUT1",1)
-            mylcd.lcd_display_string("LCD OUTPUT2",2)
-            
-            try:
-              demo(args.cascaded, args.block_orientation, args.rotate, args.reverse_order)
-            except KeyboardInterrupt:
-              pass
-            
-        
+            mylcd.lcd_display_string("LCD OUTPUT1", 1)
+            mylcd.lcd_display_string("LCD OUTPUT2", 2)
+
+    try:
+        demo(args.cascaded, args.block_orientation, args.rotate, args.reverse_order)
+    except KeyboardInterrupt:
+        pass
+
+
 if __name__ == '__main__':
     main()
-    
     parser = argparse.ArgumentParser(description='matrix_demo arguments',
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+                                     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('--cascaded', '-n', type=int, default=1, help='Number of cascaded MAX7219 LED matrices')
-    parser.add_argument('--block-orientation', type=int, default=0, choices=[0, 90, -90], help='Corrects block orientation when wired vertically')
-    parser.add_argument('--rotate', type=int, default=0, choices=[0, 1, 2, 3], help='Rotate display 0=0°, 1=90°, 2=180°, 3=270°')
+    parser.add_argument('--block-orientation', type=int, default=0, choices=[0, 90, -90],
+                        help='Corrects block orientation when wired vertically')
+    parser.add_argument('--rotate', type=int, default=0, choices=[0, 1, 2, 3],
+                        help='Rotate display 0=0°, 1=90°, 2=180°, 3=270°')
     parser.add_argument('--reverse-order', type=bool, default=False, help='Set to true if blocks are in reverse order')
 
     args = parser.parse_args()
 
-      
+
