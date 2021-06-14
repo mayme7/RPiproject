@@ -17,7 +17,7 @@ def main():
   PWM_LED.start(0)
 
   try:
-    while True:
+    while 1:
       #for duty in range(100):
         #PWM_LED.ChangeDutyCycle(duty)
         #print(PWM_LED)
