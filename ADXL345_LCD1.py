@@ -1,5 +1,6 @@
 # smbus library
 import smbus
+
 import RPi.GPIO as GPIO
 import I2C_driver as LCD
 import time
@@ -38,6 +39,7 @@ def main():
     print(bus)
     init_ADXL345()
     mylcd = LCD.lcd()
+    
     while 1:
         x = input()
         if x == '1':
@@ -47,12 +49,14 @@ def main():
             z_acc = measure_acc(z_adr)
             
             print ('X = %2.2f' % x_acc, '[g], Y = %2.2f' % y_acc, '[g], Z = %2.2f' % z_acc, '[g]')
+            time.sleep(0.5)
             mylcd.lcd_clear()
             
         else:
             print("2")
             mylcd.lcd_display_string("Hello1",1)
             mylcd.lcd_display_string("Hello2",2)
+            time.sleep(0.5)
         
 if __name__ == '__main__':
     main()
