@@ -2,7 +2,6 @@ import RPi.GPIO as GPIO
 import I2C_driver as LCD
 from time import *
 
-Switch = 10
 LED_G = 12
 LED_B = 16
 LED_R = 18
@@ -12,8 +11,9 @@ GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 
 def main():
-  GPIO.setup(Switch, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-  GPIO.setup(LED, GPIO.OUT, initial=GPIO.LOW)
+  GPIO.setup(LED_G, GPIO.OUT, initial=GPIO.LOW)
+  GPIO.setup(LED_B, GPIO.OUT, initial=GPIO.LOW)
+  GPIO.setup(LED_R, GPIO.OUT, initial=GPIO.LOW)
 
   try:
     while 1:
@@ -40,4 +40,3 @@ def main():
     GPIO.cleanup()
    
 if __name__ == '__main__':
-    main()
