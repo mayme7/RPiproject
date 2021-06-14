@@ -29,7 +29,7 @@ try:
             for i in range(10):
                 GPIO.output(LED, True)
                 p1.ChangeDutyCycle(i * 10)
-                setLight(i * 10, p1)
+                main(i * 10, p1)
                 time.sleep(0.5)
 
             print("%.2f" % (PWM_LED))
@@ -45,7 +45,7 @@ try:
                 p1.start(100)
                 GPIO.output(LED, True)
                 p1.ChangeDutyCycle(j * 10)
-                setLight(j * 10, p1)
+                main(j * 10, p1)
                 time.sleep(0.5)
 
             print("%.2f" % (PWM_LED))
