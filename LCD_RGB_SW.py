@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import I2C_driver as LCD
-from time import *
+import time
 
 Switch_G = 10
 Switch_B = 15
@@ -28,14 +28,34 @@ def main():
         mylcd.lcd_display_string("Green LED ON!",1)
         GPIO.output(LED_G, GPIO.HIGH)
         time.sleep(0.5)
-      else:
+      elif GPIO.input(Switch_G) == GPIO.LOW::
         print("LED OFF!")
         mylcd.lcd_display_string("Green LED OFF!",1)
         GPIO.output(LED_G, GPIO.LOW)
+        time.sleep(0.5
+                   
+      elif GPIO.input(Switch_B) == GPIO.LOW::
+        print("LED OFF!")
+        mylcd.lcd_display_string("Green LED OFF!",1)
+        GPIO.output(LED_B, GPIO.LOW)
+        time.sleep(0.5)
+      elif GPIO.input(Switch_B) == GPIO.LOW::
+        print("LED OFF!")
+        mylcd.lcd_display_string("Green LED OFF!",1)
+        GPIO.output(LED_B, GPIO.LOW)
+        time.sleep(0.5
+                   
+      elif GPIO.input(Switch_R) == GPIO.LOW::
+        print("LED OFF!")
+        mylcd.lcd_display_string("Green LED OFF!",1)
+        GPIO.output(LED_R, GPIO.LOW)
+        time.sleep(0.5)
+      elif GPIO.input(Switch_R) == GPIO.LOW::
+        print("LED OFF!")
+        mylcd.lcd_display_string("Green LED OFF!",1)
+        GPIO.output(LED_R, GPIO.LOW)
         time.sleep(0.5)
                     
-                    
-        
   finally:
     GPIO.cleanup()
    
