@@ -72,7 +72,7 @@ def main():
         elif num == '3':
             with canvas(virtual) as draw:
             #text(draw, (0, 1), "Idris", fill="white", font=proportional(CP437_FONT))
-            text(draw, (0, 1), datetime.now().strftime('%I:%M'), fill="white", font=proportional(CP437_FONT))
+                text(draw, (0, 1), datetime.now().strftime('%I:%M'), fill="white", font=proportional(CP437_FONT))
         
         
 if __name__ == '__main__':
